@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staller - Página Principal</title>
+    <title>Khoindvn - Downloads e Recursos</title>
     <style>
         * {
             margin: 0;
@@ -84,11 +84,22 @@
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
+            margin: 5px;
         }
         
         .btn:hover {
             background-color: #00a3cc;
             transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #00ccff;
+            color: #00ccff;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(0, 204, 255, 0.1);
         }
         
         .features {
@@ -131,6 +142,87 @@
             color: #cccccc;
         }
         
+        .downloads {
+            padding: 60px 0;
+            background-color: #1a1a2e;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .download-card {
+            background-color: #0f0f23;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #33334d;
+            transition: all 0.3s ease;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ccff;
+        }
+        
+        .download-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #00ccff;
+        }
+        
+        .download-card h3 {
+            color: #00ccff;
+            margin-bottom: 10px;
+        }
+        
+        .download-card p {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .instructions {
+            padding: 60px 0;
+        }
+        
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: #00ccff;
+            color: #0f0f23;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            color: #00ccff;
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: #cccccc;
+        }
+        
         footer {
             background-color: #1a1a2e;
             padding: 30px 0;
@@ -158,6 +250,14 @@
             font-size: 14px;
         }
         
+        .warning {
+            background-color: #332222;
+            border-left: 4px solid #ff4444;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 28px;
@@ -171,6 +271,14 @@
                 display: block;
                 margin: 5px 0;
             }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -180,55 +288,136 @@
             <div class="logo">KHOINDVN</div>
             <nav>
                 <a href="#">Início</a>
-                <a href="#">Recursos</a>
-                <a href="#">Downloads</a>
-                <a href="#">Suporte</a>
-                <a href="#">Sobre</a>
+                <a href="#downloads">Downloads</a>
+                <a href="#features">Recursos</a>
+                <a href="#instructions">Instruções</a>
+                <a href="#support">Suporte</a>
             </nav>
         </div>
     </header>
     
     <section class="hero">
         <div class="container">
-            <h1>Bem-vindo ao Khoindvn</h1>
-            <p>Uma plataforma completa para melhorar sua experiência de jogo com ferramentas e recursos exclusivos.</p>
-            <a href="#" class="btn">Começar Agora</a>
+            <h1>Khoindvn - Melhore sua Experiência de Jogo</h1>
+            <p>Ferramentas e aplicativos exclusivos para otimizar seu jogo e obter vantagens competitivas.</p>
+            <a href="#downloads" class="btn">Baixar Agora</a>
+            <a href="#instructions" class="btn btn-secondary">Como Instalar</a>
         </div>
     </section>
     
-    <section class="features">
+    <section id="downloads" class="downloads">
         <div class="container">
-            <h2 class="section-title">Nossos Recursos</h2>
+            <h2 class="section-title">Downloads dos Aplicativos MDs</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Baixe nossos aplicativos MDs para melhorar sua experiência de jogo</p>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="download-icon">📱</div>
+                    <h3>MD App v1.5</h3>
+                    <p>Versão estável com recursos básicos</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">⚡</div>
+                    <h3>MD App Pro</h3>
+                    <p>Versão premium com recursos avançados</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">🔧</div>
+                    <h3>Ferramentas MD</h3>
+                    <p>Utilitários para otimização do sistema</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">🎮</div>
+                    <h3>MD Game Boost</h3>
+                    <p>Otimizador específico para jogos</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <strong>Aviso de Segurança:</strong> Certifique-se de baixar apenas de fontes confiáveis. Verifique a autenticidade dos arquivos antes da instalação.
+            </div>
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Recursos Exclusivos</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>Otimização de Jogo</h3>
-                    <p>Melhore o desempenho do seu jogo com nossas ferramentas de otimização avançadas.</p>
+                    <h3>Otimização Avançada</h3>
+                    <p>Melhore o desempenho do seu jogo com nossas ferramentas de otimização de última geração.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Interface Personalizada</h3>
-                    <p>Personalize a interface do jogo de acordo com suas preferências e necessidades.</p>
+                    <h3>Interface Personalizável</h3>
+                    <p>Adapte a interface do jogo de acordo com suas preferências e estilo de jogo.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Atualizações Regulares</h3>
-                    <p>Mantenha-se atualizado com as últimas versões e recursos disponíveis.</p>
+                    <h3>Atualizações Constantes</h3>
+                    <p>Receba atualizações regulares com novos recursos e melhorias de desempenho.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Suporte Técnico</h3>
-                    <p>Nossa equipe está disponível para ajudar com qualquer problema ou dúvida.</p>
+                    <h3>Suporte 24/7</h3>
+                    <p>Nossa equipe de suporte está disponível para ajudar com qualquer problema.</p>
                 </div>
                 <div class="feature-card">
                     <h3>Comunidade Ativa</h3>
-                    <p>Participe de uma comunidade vibrante de jogadores com interesses semelhantes.</p>
+                    <p>Participe de uma comunidade vibrante e compartilhe experiências.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Segurança Garantida</h3>
-                    <p>Todas as nossas ferramentas são testadas para garantir a segurança do seu sistema.</p>
+                    <h3>Segurança Verificada</h3>
+                    <p>Todas as nossas ferramentas passam por rigorosos testes de segurança.</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <footer>
+    <section id="instructions" class="instructions">
+        <div class="container">
+            <h2 class="section-title">Como Instalar</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Baixe o Aplicativo</h3>
+                        <p>Selecione e baixe o aplicativo MD desejado da seção de downloads acima.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Instale o Aplicativo</h3>
+                        <p>Execute o arquivo baixado e siga as instruções do instalador.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Configure as Preferências</h3>
+                        <p>Abra o aplicativo e ajuste as configurações de acordo com suas necessidades.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Execute o Jogo</h3>
+                        <p>Inicie seu jogo e aproveite os recursos adicionais fornecidos pelo aplicativo MD.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="support">
         <div class="container">
             <div class="footer-links">
                 <a href="#">Termos de Serviço</a>
