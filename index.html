@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteXAuth - Sistema de Autenticação</title>
+    <title>ByteXAuth - Scripts</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -133,13 +133,13 @@
             width: 100%;
         }
 
-        .hero {
+        .page-header {
             text-align: center;
-            padding: 80px 0;
+            padding: 60px 0 40px;
             position: relative;
         }
 
-        .hero h1 {
+        .page-header h1 {
             font-size: 48px;
             margin-bottom: 20px;
             background: linear-gradient(to right, var(--primary-light), var(--accent));
@@ -150,7 +150,7 @@
             display: inline-block;
         }
 
-        .hero h1::after {
+        .page-header h1::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -162,23 +162,136 @@
             box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        .hero p {
+        .page-header p {
             font-size: 20px;
             color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin: 0 auto;
             line-height: 1.6;
+        }
+
+        .scripts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .script-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .script-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .script-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .script-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .script-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .script-title i {
+            color: var(--primary-light);
+            font-size: 20px;
+        }
+
+        .script-title h3 {
+            font-size: 20px;
+            color: var(--text);
+        }
+
+        .script-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .script-body {
+            padding: 20px;
+        }
+
+        .script-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .script-info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .script-info-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .script-info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .script-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .script-tag {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .script-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
             border-radius: 5px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
@@ -213,124 +326,42 @@
             box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 80px 0;
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 12px;
         }
 
-        .feature-card {
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary-light);
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
+        .script-price {
+            font-size: 18px;
+            font-weight: 700;
             color: var(--text);
         }
 
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
+        .script-price.free {
+            color: var(--success);
         }
 
-        .auth-section {
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 40px;
-            margin: 60px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .script-price.premium {
+            color: var(--warning);
         }
 
-        .auth-tabs {
+        .search-filter {
             display: flex;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            gap: 20px;
         }
 
-        .auth-tab {
-            padding: 15px 30px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-secondary);
-            transition: all 0.3s;
+        .search-box {
             position: relative;
+            flex: 1;
+            max-width: 500px;
         }
 
-        .auth-tab.active {
-            color: var(--text);
-        }
-
-        .auth-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
+        .search-box input {
             width: 100%;
-            height: 3px;
-            background: var(--primary-light);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .auth-form {
-            display: none;
-        }
-
-        .auth-form.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
+            padding: 12px 15px 12px 45px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 5px;
@@ -339,130 +370,132 @@
             transition: all 0.3s;
         }
 
-        .form-control:focus {
+        .search-box input:focus {
             outline: none;
             border-color: var(--primary-light);
             box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
         }
 
-        .form-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 25px;
-        }
-
-        .checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--text-secondary);
         }
 
-        .checkbox input {
-            accent-color: var(--primary-light);
-        }
-
-        .forgot-password {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .forgot-password:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-
-        .dashboard {
-            display: none;
-            margin: 40px 0;
-        }
-
-        .dashboard.active {
-            display: block;
-        }
-
-        .dashboard-header {
+        .filter-options {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
             gap: 15px;
         }
 
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
+        .filter-select {
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--text);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .dashboard-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-light);
         }
 
-        .dashboard-card {
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dashboard-card::before {
-            content: '';
-            position: absolute;
+        .modal {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
         }
 
-        .dashboard-card h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--text-secondary);
+        .modal.active {
+            display: flex;
         }
 
-        .dashboard-card .value {
-            font-size: 32px;
-            font-weight: 700;
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 24px;
             color: var(--text);
         }
 
-        .dashboard-card .trend {
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 10px;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .script-detail {
+            margin-bottom: 20px;
+        }
+
+        .script-detail h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .script-detail p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .code-preview {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
             font-size: 14px;
-        }
-
-        .trend.up {
-            color: var(--success);
-        }
-
-        .trend.down {
-            color: var(--error);
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         footer {
@@ -508,25 +541,6 @@
             background: #4752c4;
         }
 
-        .alert {
-            padding: 12px 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .alert-success {
-            background: rgba(16, 185, 129, 0.2);
-            border: 1px solid var(--success);
-            color: var(--success);
-        }
-
-        .alert-error {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid var(--error);
-            color: var(--error);
-        }
-
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -537,26 +551,25 @@
                 gap: 15px;
             }
             
-            .hero h1 {
+            .page-header h1 {
                 font-size: 36px;
             }
             
-            .hero p {
+            .page-header p {
                 font-size: 18px;
             }
             
-            .auth-tabs {
-                flex-direction: column;
+            .scripts-container {
+                grid-template-columns: 1fr;
             }
             
-            .auth-tab {
-                text-align: center;
+            .search-filter {
+                flex-direction: column;
+                align-items: stretch;
             }
             
-            .form-footer {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
+            .filter-options {
+                justify-content: space-between;
             }
         }
     </style>
@@ -572,147 +585,43 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#features">Recursos</a></li>
-                    <li><a href="#auth">Autenticação</a></li>
-                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="scripts.html" class="active">Scripts</a></li>
+                    <li><a href="auth.html">Autenticação</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
                 </ul>
             </nav>
         </header>
 
-        <section class="hero" id="home">
-            <h1>ByteXAuth</h1>
-            <p>Sistema de autenticação avançado com segurança de nível empresarial e interface moderna. Proteja seus aplicativos com nossa solução confiável.</p>
-            <a href="#auth" class="btn">Começar Agora</a>
+        <section class="page-header">
+            <h1>Nossos Scripts</h1>
+            <p>Explore nossa coleção de scripts premium e gratuitos para otimizar seus projetos</p>
         </section>
 
-        <section class="features" id="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Segurança Máxima</h3>
-                <p>Proteção avançada contra ataques com criptografia de última geração e autenticação de múltiplos fatores.</p>
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Pesquisar scripts...">
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3>Alta Velocidade</h3>
-                <p>Processamento rápido de autenticações com tempo de resposta mínimo para melhor experiência do usuário.</p>
+            <div class="filter-options">
+                <select class="filter-select" id="categoryFilter">
+                    <option value="all">Todas as Categorias</option>
+                    <option value="auth">Autenticação</option>
+                    <option value="security">Segurança</option>
+                    <option value="utility">Utilitários</option>
+                    <option value="game">Jogos</option>
+                </select>
+                <select class="filter-select" id="priceFilter">
+                    <option value="all">Todos os Preços</option>
+                    <option value="free">Gratuitos</option>
+                    <option value="premium">Premium</option>
+                </select>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>Fácil Integração</h3>
-                <p>APIs simples e documentação completa para integração rápida em qualquer projeto ou aplicação.</p>
-            </div>
-        </section>
+        </div>
 
-        <section class="auth-section" id="auth">
-            <div class="auth-tabs">
-                <div class="auth-tab active" data-tab="login">Login</div>
-                <div class="auth-tab" data-tab="register">Registro</div>
-            </div>
-
-            <div class="alert alert-success" id="successAlert">
-                Operação realizada com sucesso!
-            </div>
-
-            <div class="alert alert-error" id="errorAlert">
-                Ocorreu um erro. Tente novamente.
-            </div>
-
-            <form class="auth-form active" id="loginForm">
-                <div class="form-group">
-                    <label for="loginUsername">Usuário ou E-mail</label>
-                    <input type="text" id="loginUsername" class="form-control" placeholder="Digite seu usuário ou e-mail" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Senha</label>
-                    <input type="password" id="loginPassword" class="form-control" placeholder="Digite sua senha" required>
-                </div>
-                <div class="form-footer">
-                    <div class="checkbox">
-                        <input type="checkbox" id="rememberMe">
-                        <label for="rememberMe">Lembrar-me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
-                </div>
-                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Entrar</button>
-            </form>
-
-            <form class="auth-form" id="registerForm">
-                <div class="form-group">
-                    <label for="registerUsername">Nome de Usuário</label>
-                    <input type="text" id="registerUsername" class="form-control" placeholder="Escolha um nome de usuário" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">E-mail</label>
-                    <input type="email" id="registerEmail" class="form-control" placeholder="Digite seu e-mail" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Senha</label>
-                    <input type="password" id="registerPassword" class="form-control" placeholder="Crie uma senha forte" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerConfirmPassword">Confirmar Senha</label>
-                    <input type="password" id="registerConfirmPassword" class="form-control" placeholder="Digite a senha novamente" required>
-                </div>
-                <div class="form-footer">
-                    <div class="checkbox">
-                        <input type="checkbox" id="acceptTerms" required>
-                        <label for="acceptTerms">Aceito os termos de serviço</label>
-                    </div>
-                </div>
-                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Criar Conta</button>
-            </form>
-        </section>
-
-        <section class="dashboard" id="dashboard">
-            <div class="dashboard-header">
-                <h2>Dashboard</h2>
-                <div class="user-info">
-                    <div class="user-avatar">JS</div>
-                    <div>
-                        <div>John Smith</div>
-                        <div style="font-size: 14px; color: var(--text-secondary);">Administrador</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-cards">
-                <div class="dashboard-card">
-                    <h3>Usuários Ativos</h3>
-                    <div class="value">1,247</div>
-                    <div class="trend up">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>12% este mês</span>
-                    </div>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Autenticações Hoje</h3>
-                    <div class="value">5,832</div>
-                    <div class="trend up">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>8% desde ontem</span>
-                    </div>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Tempo de Atividade</h3>
-                    <div class="value">99.9%</div>
-                    <div class="trend down">
-                        <i class="fas fa-arrow-down"></i>
-                        <span>0.1% este mês</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <button class="btn btn-secondary" id="logoutBtn">Sair</button>
-            </div>
-        </section>
+        <div class="scripts-container" id="scriptsContainer">
+            <!-- Scripts serão carregados dinamicamente via JavaScript -->
+        </div>
 
         <footer>
             <div class="logo" style="justify-content: center; margin-bottom: 20px;">
@@ -736,136 +645,407 @@
         </footer>
     </div>
 
+    <!-- Modal de Detalhes do Script -->
+    <div class="modal" id="scriptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Detalhes do Script</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="script-detail">
+                    <h3>Descrição</h3>
+                    <p id="modalDescription"></p>
+                </div>
+                <div class="script-detail">
+                    <h3>Recursos</h3>
+                    <ul id="modalFeatures"></ul>
+                </div>
+                <div class="script-detail">
+                    <h3>Prévia do Código</h3>
+                    <div class="code-preview" id="modalCode"></div>
+                </div>
+                <div class="script-detail">
+                    <h3>Instruções de Uso</h3>
+                    <p id="modalInstructions"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modalDownload">Baixar Script</button>
+                <button class="btn" id="modalPurchase">Comprar Agora</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Sistema de abas de autenticação
-        document.querySelectorAll('.auth-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remover classe active de todas as abas
-                document.querySelectorAll('.auth-tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-                
-                // Adicionar classe active à aba clicada
-                tab.classList.add('active');
-                
-                // Esconder todos os formulários
-                document.querySelectorAll('.auth-form').forEach(form => {
-                    form.classList.remove('active');
-                });
-                
-                // Mostrar o formulário correspondente
-                const tabId = tab.getAttribute('data-tab');
-                document.getElementById(`${tabId}Form`).classList.add('active');
-                
-                // Limpar alertas
-                hideAlerts();
+        // Dados dos scripts
+        const scriptsData = [
+            {
+                id: 1,
+                title: "Sistema de Autenticação",
+                icon: "fas fa-user-shield",
+                description: "Sistema completo de autenticação com login, registro e recuperação de senha.",
+                version: "2.1.4",
+                downloads: 15420,
+                rating: 4.9,
+                tags: ["auth", "security", "premium"],
+                price: 29.99,
+                category: "auth",
+                codePreview: `// Sistema de autenticação ByteXAuth
+const authSystem = {
+    login: function(username, password) {
+        // Lógica de autenticação
+        return this.verifyCredentials(username, password);
+    },
+    register: function(userData) {
+        // Registrar novo usuário
+        return this.createUser(userData);
+    },
+    // ... mais funções
+};`,
+                features: [
+                    "Login e registro de usuários",
+                    "Recuperação de senha por e-mail",
+                    "Autenticação de dois fatores",
+                    "Proteção contra ataques de força bruta"
+                ],
+                instructions: "Após o download, inclua o arquivo auth.js em seu projeto e siga as instruções de configuração no arquivo README.md."
+            },
+            {
+                id: 2,
+                title: "API Security Middleware",
+                icon: "fas fa-shield-alt",
+                description: "Middleware de segurança para APIs com proteção contra ataques comuns.",
+                version: "1.5.2",
+                downloads: 8920,
+                rating: 4.8,
+                tags: ["security", "api", "premium"],
+                price: 19.99,
+                category: "security",
+                codePreview: `// Middleware de segurança para APIs
+app.use(securityMiddleware({
+    rateLimit: {
+        windowMs: 15 * 60 * 1000, // 15 minutos
+        max: 100 // limite de 100 requisições por IP
+    },
+    cors: {
+        origin: ['https://seusite.com']
+    },
+    // ... mais configurações
+}));`,
+                features: [
+                    "Rate limiting avançado",
+                    "Proteção CORS",
+                    "Sanitização de dados de entrada",
+                    "Detecção de bots maliciosos"
+                ],
+                instructions: "Instale via npm: npm install bytex-auth-security. Configure o middleware conforme documentação."
+            },
+            {
+                id: 3,
+                title: "Password Generator",
+                icon: "fas fa-key",
+                description: "Gerador de senhas seguras com múltiplas opções de personalização.",
+                version: "1.2.0",
+                downloads: 12500,
+                rating: 4.7,
+                tags: ["security", "utility", "free"],
+                price: 0,
+                category: "utility",
+                codePreview: `// Gerador de senhas seguras
+function generatePassword(length = 12, options = {}) {
+    const chars = {
+        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lowercase: 'abcdefghijklmnopqrstuvwxyz',
+        numbers: '0123456789',
+        symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+    };
+    
+    // Lógica de geração de senha
+    // ...
+    return securePassword;
+}`,
+                features: [
+                    "Geração de senhas seguras",
+                    "Múltiplos níveis de complexidade",
+                    "Personalização de caracteres",
+                    "Avaliação de força da senha"
+                ],
+                instructions: "Copie o código para seu projeto ou use o arquivo standalone disponível no download."
+            },
+            {
+                id: 4,
+                title: "Session Manager",
+                icon: "fas fa-clock",
+                description: "Gerenciamento avançado de sessões de usuário com renovação automática.",
+                version: "1.8.3",
+                downloads: 7430,
+                rating: 4.6,
+                tags: ["auth", "security", "premium"],
+                price: 24.99,
+                category: "auth",
+                codePreview: `// Gerenciador de sessões
+class SessionManager {
+    constructor(options = {}) {
+        this.timeout = options.timeout || 3600;
+        this.autoRenew = options.autoRenew || true;
+    }
+    
+    createSession(userId) {
+        // Criar nova sessão
+        const sessionId = this.generateSessionId();
+        // ...
+        return sessionId;
+    }
+    
+    // ... mais métodos
+}`,
+                features: [
+                    "Gerenciamento de sessões de usuário",
+                    "Renovação automática de tokens",
+                    "Expiração configurável",
+                    "Logout remoto"
+                ],
+                instructions: "Implemente a classe SessionManager em seu projeto e configure conforme necessário."
+            },
+            {
+                id: 5,
+                title: "Encryption Utility",
+                icon: "fas fa-lock",
+                description: "Utilitário de criptografia para dados sensíveis com múltiplos algoritmos.",
+                version: "2.0.1",
+                downloads: 6800,
+                rating: 4.9,
+                tags: ["security", "utility", "free"],
+                price: 0,
+                category: "security",
+                codePreview: `// Utilitário de criptografia
+const cryptoUtils = {
+    encrypt: function(data, key, algorithm = 'aes-256-gcm') {
+        // Implementação de criptografia
+        // ...
+        return encryptedData;
+    },
+    
+    decrypt: function(encryptedData, key, algorithm = 'aes-256-gcm') {
+        // Implementação de descriptografia
+        // ...
+        return decryptedData;
+    }
+};`,
+                features: [
+                    "Criptografia AES-256",
+                    "Suporte a múltiplos algoritmos",
+                    "Geração segura de chaves",
+                    "Criptografia de arquivos"
+                ],
+                instructions: "Inclua o arquivo encryption.js em seu projeto e use as funções conforme documentação."
+            },
+            {
+                id: 6,
+                title: "Game Anti-Cheat",
+                icon: "fas fa-gamepad",
+                description: "Sistema de detecção de trapaças para jogos online com relatórios detalhados.",
+                version: "3.2.5",
+                downloads: 15200,
+                rating: 4.7,
+                tags: ["security", "game", "premium"],
+                price: 49.99,
+                category: "game",
+                codePreview: `// Sistema anti-cheat
+class AntiCheatSystem {
+    constructor(gameEngine) {
+        this.gameEngine = gameEngine;
+        this.detectors = [
+            new SpeedHackDetector(),
+            new WallHackDetector(),
+            new AimbotDetector()
+        ];
+    }
+    
+    monitorPlayer(player) {
+        // Monitorar atividades do jogador
+        // ...
+    }
+    
+    // ... mais métodos
+}`,
+                features: [
+                    "Detecção de speed hacks",
+                    "Identificação de wallhacks",
+                    "Detecção de aimbots",
+                    "Sistema de relatórios"
+                ],
+                instructions: "Integre o sistema anti-cheat em seu jogo conforme documentação fornecida."
+            }
+        ];
+
+        // Função para renderizar os scripts
+        function renderScripts(scripts) {
+            const container = document.getElementById('scriptsContainer');
+            container.innerHTML = '';
+            
+            scripts.forEach(script => {
+                const card = document.createElement('div');
+                card.className = 'script-card';
+                card.innerHTML = `
+                    <div class="script-header">
+                        <div class="script-title">
+                            <i class="${script.icon}"></i>
+                            <h3>${script.title}</h3>
+                        </div>
+                        <p class="script-description">${script.description}</p>
+                    </div>
+                    <div class="script-body">
+                        <div class="script-info">
+                            <div class="script-info-item">
+                                <span class="script-info-label">Versão</span>
+                                <span class="script-info-value">${script.version}</span>
+                            </div>
+                            <div class="script-info-item">
+                                <span class="script-info-label">Downloads</span>
+                                <span class="script-info-value">${script.downloads.toLocaleString()}</span>
+                            </div>
+                            <div class="script-info-item">
+                                <span class="script-info-label">Avaliação</span>
+                                <span class="script-info-value">${script.rating}/5.0</span>
+                            </div>
+                        </div>
+                        <div class="script-tags">
+                            ${script.tags.map(tag => `<span class="script-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="script-footer">
+                        <div class="script-price ${script.price === 0 ? 'free' : 'premium'}">
+                            ${script.price === 0 ? 'GRATUITO' : `R$ ${script.price.toFixed(2)}`}
+                        </div>
+                        <div>
+                            <button class="btn btn-small btn-secondary view-details" data-id="${script.id}">Detalhes</button>
+                            <button class="btn btn-small ${script.price === 0 ? 'btn-secondary' : ''} download-script" data-id="${script.id}">
+                                ${script.price === 0 ? 'Baixar' : 'Comprar'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
             });
-        });
+            
+            // Adicionar event listeners para os botões
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    const scriptId = parseInt(this.getAttribute('data-id'));
+                    openScriptModal(scriptId);
+                });
+            });
+            
+            document.querySelectorAll('.download-script').forEach(button => {
+                button.addEventListener('click', function() {
+                    const scriptId = parseInt(this.getAttribute('data-id'));
+                    downloadScript(scriptId);
+                });
+            });
+        }
 
-        // Sistema de login
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Função para abrir o modal de detalhes
+        function openScriptModal(scriptId) {
+            const script = scriptsData.find(s => s.id === scriptId);
+            if (!script) return;
             
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
+            document.getElementById('modalTitle').textContent = script.title;
+            document.getElementById('modalDescription').textContent = script.description;
+            document.getElementById('modalCode').textContent = script.codePreview;
+            document.getElementById('modalInstructions').textContent = script.instructions;
             
-            // Simulação de autenticação
-            if (username && password) {
-                showSuccess('Login realizado com sucesso!');
-                
-                // Simular carregamento
-                setTimeout(() => {
-                    document.querySelector('.auth-section').style.display = 'none';
-                    document.getElementById('dashboard').classList.add('active');
-                }, 1500);
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = '';
+            script.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+            
+            // Atualizar botões do modal
+            const downloadBtn = document.getElementById('modalDownload');
+            const purchaseBtn = document.getElementById('modalPurchase');
+            
+            if (script.price === 0) {
+                downloadBtn.textContent = 'Baixar Script';
+                purchaseBtn.style.display = 'none';
             } else {
-                showError('Por favor, preencha todos os campos.');
+                downloadBtn.textContent = 'Ver Demonstração';
+                purchaseBtn.textContent = `Comprar por R$ ${script.price.toFixed(2)}`;
+                purchaseBtn.style.display = 'inline-block';
+            }
+            
+            downloadBtn.onclick = () => downloadScript(scriptId);
+            purchaseBtn.onclick = () => purchaseScript(scriptId);
+            
+            document.getElementById('scriptModal').classList.add('active');
+        }
+
+        // Função para fechar o modal
+        document.getElementById('modalClose').addEventListener('click', function() {
+            document.getElementById('scriptModal').classList.remove('active');
+        });
+
+        // Fechar modal ao clicar fora
+        document.getElementById('scriptModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
             }
         });
 
-        // Sistema de registro
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Função para baixar/comprar script
+        function downloadScript(scriptId) {
+            const script = scriptsData.find(s => s.id === scriptId);
+            if (!script) return;
             
-            const username = document.getElementById('registerUsername').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('registerConfirmPassword').value;
-            const acceptTerms = document.getElementById('acceptTerms').checked;
-            
-            // Validações
-            if (!username || !email || !password || !confirmPassword) {
-                showError('Por favor, preencha todos os campos.');
-                return;
+            if (script.price === 0) {
+                alert(`Iniciando download de ${script.title}...`);
+                // Em um sistema real, aqui seria o link de download
+            } else {
+                alert(`Redirecionando para página de compra de ${script.title}...`);
+                // Em um sistema real, aqui seria o redirecionamento para checkout
             }
+        }
+
+        // Função para comprar script (apenas para scripts premium)
+        function purchaseScript(scriptId) {
+            const script = scriptsData.find(s => s.id === scriptId);
+            if (!script || script.price === 0) return;
             
-            if (password !== confirmPassword) {
-                showError('As senhas não coincidem.');
-                return;
-            }
+            alert(`Processando compra de ${script.title} por R$ ${script.price.toFixed(2)}...`);
+            // Em um sistema real, aqui seria a integração com gateway de pagamento
+        }
+
+        // Filtros e pesquisa
+        document.getElementById('searchInput').addEventListener('input', filterScripts);
+        document.getElementById('categoryFilter').addEventListener('change', filterScripts);
+        document.getElementById('priceFilter').addEventListener('change', filterScripts);
+
+        function filterScripts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const price = document.getElementById('priceFilter').value;
             
-            if (!acceptTerms) {
-                showError('Você deve aceitar os termos de serviço.');
-                return;
-            }
+            const filteredScripts = scriptsData.filter(script => {
+                const matchesSearch = script.title.toLowerCase().includes(searchTerm) || 
+                                     script.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = category === 'all' || script.category === category;
+                const matchesPrice = price === 'all' || 
+                                   (price === 'free' && script.price === 0) || 
+                                   (price === 'premium' && script.price > 0);
+                
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
             
-            // Simulação de registro
-            showSuccess('Conta criada com sucesso! Verifique seu e-mail para ativar sua conta.');
-            
-            // Limpar formulário
-            this.reset();
+            renderScripts(filteredScripts);
+        }
+
+        // Inicializar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            renderScripts(scriptsData);
         });
-
-        // Sistema de logout
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            document.getElementById('dashboard').classList.remove('active');
-            document.querySelector('.auth-section').style.display = 'block';
-            document.querySelectorAll('.auth-form').forEach(form => form.reset());
-            showSuccess('Logout realizado com sucesso!');
-        });
-
-        // Funções de alerta
-        function showSuccess(message) {
-            const alert = document.getElementById('successAlert');
-            alert.textContent = message;
-            alert.style.display = 'block';
-            
-            setTimeout(() => {
-                alert.style.display = 'none';
-            }, 5000);
-        }
-
-        function showError(message) {
-            const alert = document.getElementById('errorAlert');
-            alert.textContent = message;
-            alert.style.display = 'block';
-            
-            setTimeout(() => {
-                alert.style.display = 'none';
-            }, 5000);
-        }
-
-        function hideAlerts() {
-            document.getElementById('successAlert').style.display = 'none';
-            document.getElementById('errorAlert').style.display = 'none';
-        }
-
-        // Efeitos de digitação no título
-        const heroTitle = document.querySelector('.hero h1');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
-        
-        // Iniciar efeito de digitação após um breve delay
-        setTimeout(typeWriter, 500);
     </script>
 </body>
 </html>
