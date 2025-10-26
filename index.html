@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staller - Página Principal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f23;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #1a1a2e;
+            padding: 20px 0;
+            border-bottom: 1px solid #33334d;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ccff;
+            text-align: center;
+        }
+        
+        nav {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #33334d;
+            color: #00ccff;
+        }
+        
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a1a2e, #0f0f23);
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #00ccff;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #cccccc;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #00ccff;
+            color: #0f0f23;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #00a3cc;
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #00ccff;
+            font-size: 28px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #1a1a2e;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #33334d;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card h3 {
+            color: #00ccff;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .feature-card p {
+            color: #cccccc;
+        }
+        
+        footer {
+            background-color: #1a1a2e;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #33334d;
+            margin-top: 60px;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .footer-links a:hover {
+            color: #00ccff;
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">KHOINDVN</div>
+            <nav>
+                <a href="#">Início</a>
+                <a href="#">Recursos</a>
+                <a href="#">Downloads</a>
+                <a href="#">Suporte</a>
+                <a href="#">Sobre</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Bem-vindo ao Khoindvn</h1>
+            <p>Uma plataforma completa para melhorar sua experiência de jogo com ferramentas e recursos exclusivos.</p>
+            <a href="#" class="btn">Começar Agora</a>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Nossos Recursos</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Otimização de Jogo</h3>
+                    <p>Melhore o desempenho do seu jogo com nossas ferramentas de otimização avançadas.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Interface Personalizada</h3>
+                    <p>Personalize a interface do jogo de acordo com suas preferências e necessidades.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Atualizações Regulares</h3>
+                    <p>Mantenha-se atualizado com as últimas versões e recursos disponíveis.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Suporte Técnico</h3>
+                    <p>Nossa equipe está disponível para ajudar com qualquer problema ou dúvida.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Comunidade Ativa</h3>
+                    <p>Participe de uma comunidade vibrante de jogadores com interesses semelhantes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Segurança Garantida</h3>
+                    <p>Todas as nossas ferramentas são testadas para garantir a segurança do seu sistema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Contato</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Khoindvn. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
