@@ -33,43 +33,6 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 20%);
-        }
-
-        .lightning {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .lightning::before, .lightning::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-            animation: lightning 8s infinite linear;
-        }
-
-        .lightning::after {
-            animation-delay: 4s;
-        }
-
-        @keyframes lightning {
-            0%, 100% { opacity: 0; }
-            5%, 7% { opacity: 0.7; }
-            10%, 12% { opacity: 0.3; }
-            15% { opacity: 0.7; }
-            20% { opacity: 0; }
         }
 
         .container {
@@ -97,7 +60,6 @@
 
         .logo i {
             color: var(--primary-light);
-            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         nav ul {
@@ -111,100 +73,51 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            position: relative;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--text);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-light);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .page-header {
+        .page-title {
             text-align: center;
-            padding: 60px 0 40px;
-            position: relative;
+            padding: 40px 0;
         }
 
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--primary-light), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
+        .page-title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--text);
         }
 
-        .page-header h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--primary-light);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .page-header p {
-            font-size: 20px;
+        .page-title p {
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
+            font-size: 18px;
         }
 
-        .scripts-container {
+        .scripts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
             margin: 40px 0;
         }
 
         .script-card {
             background: var(--bg-card);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-
-        .script-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
 
         .script-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .script-header {
             padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .script-title {
@@ -220,7 +133,7 @@
         }
 
         .script-title h3 {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--text);
         }
 
@@ -231,7 +144,7 @@
         }
 
         .script-body {
-            padding: 20px;
+            padding: 15px 20px;
         }
 
         .script-info {
@@ -241,9 +154,7 @@
         }
 
         .script-info-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
         }
 
         .script-info-label {
@@ -253,7 +164,7 @@
         }
 
         .script-info-value {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text);
         }
@@ -261,16 +172,16 @@
         .script-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 5px;
+            margin-bottom: 15px;
         }
 
         .script-tag {
             background: rgba(37, 99, 235, 0.2);
             color: var(--primary-light);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 500;
         }
 
@@ -283,56 +194,8 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary-light);
-            box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-small {
-            padding: 8px 15px;
-            font-size: 12px;
-        }
-
         .script-price {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--text);
         }
@@ -345,17 +208,44 @@
             color: var(--warning);
         }
 
-        .search-filter {
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--primary-light);
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .search-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
             margin: 30px 0;
-            gap: 20px;
         }
 
         .search-box {
             position: relative;
-            flex: 1;
+            width: 100%;
             max-width: 500px;
         }
 
@@ -364,16 +254,14 @@
             padding: 12px 15px 12px 45px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            border-radius: 8px;
             color: var(--text);
             font-size: 16px;
-            transition: all 0.3s;
         }
 
         .search-box input:focus {
             outline: none;
             border-color: var(--primary-light);
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
         }
 
         .search-box i {
@@ -384,25 +272,28 @@
             color: var(--text-secondary);
         }
 
-        .filter-options {
+        .filter-container {
             display: flex;
+            justify-content: center;
             gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .filter-select {
-            padding: 12px 15px;
+        .filter-btn {
+            padding: 8px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: var(--text);
+            border-radius: 20px;
+            color: var(--text-secondary);
             font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--primary-light);
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
         .modal {
@@ -424,14 +315,11 @@
 
         .modal-content {
             background: var(--bg-card);
-            border-radius: 10px;
+            border-radius: 8px;
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
         }
 
         .modal-header {
@@ -453,11 +341,6 @@
             color: var(--text-secondary);
             font-size: 24px;
             cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .modal-close:hover {
-            color: var(--text);
         }
 
         .modal-body {
@@ -489,13 +372,12 @@
 
         .code-preview {
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
+            border-radius: 4px;
             padding: 15px;
             margin: 15px 0;
             font-family: monospace;
             font-size: 14px;
             overflow-x: auto;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         footer {
@@ -534,7 +416,6 @@
             text-decoration: none;
             font-weight: 600;
             margin-top: 15px;
-            transition: background 0.3s;
         }
 
         .discord-link:hover {
@@ -551,32 +432,17 @@
                 gap: 15px;
             }
             
-            .page-header h1 {
-                font-size: 36px;
-            }
-            
-            .page-header p {
-                font-size: 18px;
-            }
-            
-            .scripts-container {
+            .scripts-grid {
                 grid-template-columns: 1fr;
             }
             
-            .search-filter {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .filter-options {
-                justify-content: space-between;
+            .filter-container {
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 <body>
-    <div class="lightning"></div>
-    
     <div class="container">
         <header>
             <div class="logo">
@@ -593,34 +459,29 @@
             </nav>
         </header>
 
-        <section class="page-header">
+        <section class="page-title">
             <h1>Nossos Scripts</h1>
-            <p>Explore nossa coleção de scripts premium e gratuitos para otimizar seus projetos</p>
+            <p>Encontre os melhores scripts para seus projetos</p>
         </section>
 
-        <div class="search-filter">
+        <div class="search-container">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Pesquisar scripts...">
             </div>
-            <div class="filter-options">
-                <select class="filter-select" id="categoryFilter">
-                    <option value="all">Todas as Categorias</option>
-                    <option value="auth">Autenticação</option>
-                    <option value="security">Segurança</option>
-                    <option value="utility">Utilitários</option>
-                    <option value="game">Jogos</option>
-                </select>
-                <select class="filter-select" id="priceFilter">
-                    <option value="all">Todos os Preços</option>
-                    <option value="free">Gratuitos</option>
-                    <option value="premium">Premium</option>
-                </select>
-            </div>
         </div>
 
-        <div class="scripts-container" id="scriptsContainer">
-            <!-- Scripts serão carregados dinamicamente via JavaScript -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="auth">Autenticação</button>
+            <button class="filter-btn" data-filter="security">Segurança</button>
+            <button class="filter-btn" data-filter="utility">Utilitários</button>
+            <button class="filter-btn" data-filter="free">Gratuitos</button>
+            <button class="filter-btn" data-filter="premium">Premium</button>
+        </div>
+
+        <div class="scripts-grid" id="scriptsContainer">
+            <!-- Scripts serão carregados aqui -->
         </div>
 
         <footer>
@@ -628,7 +489,7 @@
                 <i class="fas fa-bolt"></i>
                 <span>ByteXAuth</span>
             </div>
-            <p>Sistema de autenticação avançado para desenvolvedores</p>
+            <p>Seu sistema de autenticação confiável</p>
             
             <div class="social-links">
                 <a href="#"><i class="fab fa-github"></i></a>
@@ -645,7 +506,7 @@
         </footer>
     </div>
 
-    <!-- Modal de Detalhes do Script -->
+    <!-- Modal de Detalhes -->
     <div class="modal" id="scriptModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -666,19 +527,19 @@
                     <div class="code-preview" id="modalCode"></div>
                 </div>
                 <div class="script-detail">
-                    <h3>Instruções de Uso</h3>
+                    <h3>Instruções</h3>
                     <p id="modalInstructions"></p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="modalDownload">Baixar Script</button>
-                <button class="btn" id="modalPurchase">Comprar Agora</button>
+                <button class="btn btn-secondary" id="modalDownload">Baixar</button>
+                <button class="btn" id="modalPurchase">Comprar</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Dados dos scripts
+        // Dados dos scripts (igual ao original)
         const scriptsData = [
             {
                 id: 1,
@@ -686,60 +547,53 @@
                 icon: "fas fa-user-shield",
                 description: "Sistema completo de autenticação com login, registro e recuperação de senha.",
                 version: "2.1.4",
-                downloads: 15420,
-                rating: 4.9,
+                downloads: "15.4K",
+                rating: "4.9",
                 tags: ["auth", "security", "premium"],
                 price: 29.99,
                 category: "auth",
-                codePreview: `// Sistema de autenticação ByteXAuth
-const authSystem = {
-    login: function(username, password) {
-        // Lógica de autenticação
-        return this.verifyCredentials(username, password);
-    },
-    register: function(userData) {
-        // Registrar novo usuário
-        return this.createUser(userData);
-    },
-    // ... mais funções
-};`,
+                type: "premium",
+                codePreview: `// Sistema de autenticação
+function loginUser(username, password) {
+    // Verificar credenciais
+    if (validateCredentials(username, password)) {
+        return generateAuthToken(user);
+    }
+    return null;
+}`,
                 features: [
                     "Login e registro de usuários",
-                    "Recuperação de senha por e-mail",
+                    "Recuperação de senha",
                     "Autenticação de dois fatores",
-                    "Proteção contra ataques de força bruta"
+                    "Proteção contra ataques"
                 ],
-                instructions: "Após o download, inclua o arquivo auth.js em seu projeto e siga as instruções de configuração no arquivo README.md."
+                instructions: "Inclua o arquivo auth.js em seu projeto e configure as opções no arquivo config.js"
             },
             {
                 id: 2,
-                title: "API Security Middleware",
+                title: "API Security",
                 icon: "fas fa-shield-alt",
                 description: "Middleware de segurança para APIs com proteção contra ataques comuns.",
                 version: "1.5.2",
-                downloads: 8920,
-                rating: 4.8,
+                downloads: "8.9K",
+                rating: "4.8",
                 tags: ["security", "api", "premium"],
                 price: 19.99,
                 category: "security",
-                codePreview: `// Middleware de segurança para APIs
+                type: "premium",
+                codePreview: `// Middleware de segurança
 app.use(securityMiddleware({
-    rateLimit: {
-        windowMs: 15 * 60 * 1000, // 15 minutos
-        max: 100 // limite de 100 requisições por IP
-    },
-    cors: {
-        origin: ['https://seusite.com']
-    },
-    // ... mais configurações
+    rateLimit: true,
+    cors: true,
+    xssProtection: true
 }));`,
                 features: [
-                    "Rate limiting avançado",
+                    "Rate limiting",
                     "Proteção CORS",
-                    "Sanitização de dados de entrada",
-                    "Detecção de bots maliciosos"
+                    "Sanitização de dados",
+                    "Detecção de bots"
                 ],
-                instructions: "Instale via npm: npm install bytex-auth-security. Configure o middleware conforme documentação."
+                instructions: "Instale via npm e configure no arquivo de configuração principal"
             },
             {
                 id: 3,
@@ -747,31 +601,24 @@ app.use(securityMiddleware({
                 icon: "fas fa-key",
                 description: "Gerador de senhas seguras com múltiplas opções de personalização.",
                 version: "1.2.0",
-                downloads: 12500,
-                rating: 4.7,
+                downloads: "12.5K",
+                rating: "4.7",
                 tags: ["security", "utility", "free"],
                 price: 0,
                 category: "utility",
-                codePreview: `// Gerador de senhas seguras
-function generatePassword(length = 12, options = {}) {
-    const chars = {
-        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        lowercase: 'abcdefghijklmnopqrstuvwxyz',
-        numbers: '0123456789',
-        symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
-    };
-    
-    // Lógica de geração de senha
-    // ...
-    return securePassword;
+                type: "free",
+                codePreview: `// Gerador de senhas
+function generatePassword(length, options) {
+    const chars = getChars(options);
+    return generateSecurePassword(chars, length);
 }`,
                 features: [
                     "Geração de senhas seguras",
-                    "Múltiplos níveis de complexidade",
-                    "Personalização de caracteres",
-                    "Avaliação de força da senha"
+                    "Múltiplos níveis",
+                    "Personalização",
+                    "Avaliação de força"
                 ],
-                instructions: "Copie o código para seu projeto ou use o arquivo standalone disponível no download."
+                instructions: "Copie o código para seu projeto ou use o arquivo standalone"
             },
             {
                 id: 4,
@@ -779,34 +626,25 @@ function generatePassword(length = 12, options = {}) {
                 icon: "fas fa-clock",
                 description: "Gerenciamento avançado de sessões de usuário com renovação automática.",
                 version: "1.8.3",
-                downloads: 7430,
-                rating: 4.6,
+                downloads: "7.4K",
+                rating: "4.6",
                 tags: ["auth", "security", "premium"],
                 price: 24.99,
                 category: "auth",
+                type: "premium",
                 codePreview: `// Gerenciador de sessões
 class SessionManager {
-    constructor(options = {}) {
-        this.timeout = options.timeout || 3600;
-        this.autoRenew = options.autoRenew || true;
+    createSession(user) {
+        return new Session(user);
     }
-    
-    createSession(userId) {
-        // Criar nova sessão
-        const sessionId = this.generateSessionId();
-        // ...
-        return sessionId;
-    }
-    
-    // ... mais métodos
 }`,
                 features: [
-                    "Gerenciamento de sessões de usuário",
-                    "Renovação automática de tokens",
+                    "Gerenciamento de sessões",
+                    "Renovação automática",
                     "Expiração configurável",
                     "Logout remoto"
                 ],
-                instructions: "Implemente a classe SessionManager em seu projeto e configure conforme necessário."
+                instructions: "Implemente a classe SessionManager em seu projeto"
             },
             {
                 id: 5,
@@ -814,32 +652,22 @@ class SessionManager {
                 icon: "fas fa-lock",
                 description: "Utilitário de criptografia para dados sensíveis com múltiplos algoritmos.",
                 version: "2.0.1",
-                downloads: 6800,
-                rating: 4.9,
+                downloads: "6.8K",
+                rating: "4.9",
                 tags: ["security", "utility", "free"],
                 price: 0,
                 category: "security",
+                type: "free",
                 codePreview: `// Utilitário de criptografia
-const cryptoUtils = {
-    encrypt: function(data, key, algorithm = 'aes-256-gcm') {
-        // Implementação de criptografia
-        // ...
-        return encryptedData;
-    },
-    
-    decrypt: function(encryptedData, key, algorithm = 'aes-256-gcm') {
-        // Implementação de descriptografia
-        // ...
-        return decryptedData;
-    }
-};`,
+const encrypted = encrypt(data, key);
+const decrypted = decrypt(encrypted, key);`,
                 features: [
                     "Criptografia AES-256",
-                    "Suporte a múltiplos algoritmos",
-                    "Geração segura de chaves",
+                    "Múltiplos algoritmos",
+                    "Geração de chaves",
                     "Criptografia de arquivos"
                 ],
-                instructions: "Inclua o arquivo encryption.js em seu projeto e use as funções conforme documentação."
+                instructions: "Inclua o arquivo encryption.js em seu projeto"
             },
             {
                 id: 6,
@@ -847,28 +675,16 @@ const cryptoUtils = {
                 icon: "fas fa-gamepad",
                 description: "Sistema de detecção de trapaças para jogos online com relatórios detalhados.",
                 version: "3.2.5",
-                downloads: 15200,
-                rating: 4.7,
+                downloads: "15.2K",
+                rating: "4.7",
                 tags: ["security", "game", "premium"],
                 price: 49.99,
                 category: "game",
+                type: "premium",
                 codePreview: `// Sistema anti-cheat
-class AntiCheatSystem {
-    constructor(gameEngine) {
-        this.gameEngine = gameEngine;
-        this.detectors = [
-            new SpeedHackDetector(),
-            new WallHackDetector(),
-            new AimbotDetector()
-        ];
-    }
-    
-    monitorPlayer(player) {
-        // Monitorar atividades do jogador
-        // ...
-    }
-    
-    // ... mais métodos
+antiCheat.monitor(player);
+if (antiCheat.detectCheats(player)) {
+    antiCheat.ban(player);
 }`,
                 features: [
                     "Detecção de speed hacks",
@@ -876,11 +692,11 @@ class AntiCheatSystem {
                     "Detecção de aimbots",
                     "Sistema de relatórios"
                 ],
-                instructions: "Integre o sistema anti-cheat em seu jogo conforme documentação fornecida."
+                instructions: "Integre o sistema anti-cheat em seu jogo"
             }
         ];
 
-        // Função para renderizar os scripts
+        // Renderizar scripts
         function renderScripts(scripts) {
             const container = document.getElementById('scriptsContainer');
             container.innerHTML = '';
@@ -904,11 +720,11 @@ class AntiCheatSystem {
                             </div>
                             <div class="script-info-item">
                                 <span class="script-info-label">Downloads</span>
-                                <span class="script-info-value">${script.downloads.toLocaleString()}</span>
+                                <span class="script-info-value">${script.downloads}</span>
                             </div>
                             <div class="script-info-item">
                                 <span class="script-info-label">Avaliação</span>
-                                <span class="script-info-value">${script.rating}/5.0</span>
+                                <span class="script-info-value">${script.rating}</span>
                             </div>
                         </div>
                         <div class="script-tags">
@@ -917,11 +733,11 @@ class AntiCheatSystem {
                     </div>
                     <div class="script-footer">
                         <div class="script-price ${script.price === 0 ? 'free' : 'premium'}">
-                            ${script.price === 0 ? 'GRATUITO' : `R$ ${script.price.toFixed(2)}`}
+                            ${script.price === 0 ? 'GRATUITO' : `R$ ${script.price}`}
                         </div>
                         <div>
                             <button class="btn btn-small btn-secondary view-details" data-id="${script.id}">Detalhes</button>
-                            <button class="btn btn-small ${script.price === 0 ? 'btn-secondary' : ''} download-script" data-id="${script.id}">
+                            <button class="btn btn-small ${script.price === 0 ? 'btn-secondary' : ''}" data-id="${script.id}">
                                 ${script.price === 0 ? 'Baixar' : 'Comprar'}
                             </button>
                         </div>
@@ -930,23 +746,28 @@ class AntiCheatSystem {
                 container.appendChild(card);
             });
             
-            // Adicionar event listeners para os botões
-            document.querySelectorAll('.view-details').forEach(button => {
-                button.addEventListener('click', function() {
+            // Adicionar event listeners
+            document.querySelectorAll('.view-details').forEach(btn => {
+                btn.addEventListener('click', function() {
                     const scriptId = parseInt(this.getAttribute('data-id'));
                     openScriptModal(scriptId);
                 });
             });
             
-            document.querySelectorAll('.download-script').forEach(button => {
-                button.addEventListener('click', function() {
+            document.querySelectorAll('.btn-small:not(.view-details)').forEach(btn => {
+                btn.addEventListener('click', function() {
                     const scriptId = parseInt(this.getAttribute('data-id'));
-                    downloadScript(scriptId);
+                    const script = scriptsData.find(s => s.id === scriptId);
+                    if (script.price === 0) {
+                        alert(`Download iniciado: ${script.title}`);
+                    } else {
+                        alert(`Redirecionando para compra: ${script.title}`);
+                    }
                 });
             });
         }
 
-        // Função para abrir o modal de detalhes
+        // Modal functions
         function openScriptModal(scriptId) {
             const script = scriptsData.find(s => s.id === scriptId);
             if (!script) return;
@@ -964,85 +785,77 @@ class AntiCheatSystem {
                 featuresList.appendChild(li);
             });
             
-            // Atualizar botões do modal
+            // Configurar botões
             const downloadBtn = document.getElementById('modalDownload');
             const purchaseBtn = document.getElementById('modalPurchase');
             
             if (script.price === 0) {
-                downloadBtn.textContent = 'Baixar Script';
+                downloadBtn.textContent = 'Baixar';
                 purchaseBtn.style.display = 'none';
             } else {
-                downloadBtn.textContent = 'Ver Demonstração';
-                purchaseBtn.textContent = `Comprar por R$ ${script.price.toFixed(2)}`;
+                downloadBtn.textContent = 'Ver Demo';
+                purchaseBtn.textContent = `Comprar R$ ${script.price}`;
                 purchaseBtn.style.display = 'inline-block';
             }
             
-            downloadBtn.onclick = () => downloadScript(scriptId);
-            purchaseBtn.onclick = () => purchaseScript(scriptId);
+            downloadBtn.onclick = () => {
+                if (script.price === 0) {
+                    alert(`Download: ${script.title}`);
+                } else {
+                    alert(`Demo: ${script.title}`);
+                }
+            };
+            
+            purchaseBtn.onclick = () => {
+                alert(`Compra: ${script.title} - R$ ${script.price}`);
+            };
             
             document.getElementById('scriptModal').classList.add('active');
         }
 
-        // Função para fechar o modal
+        // Fechar modal
         document.getElementById('modalClose').addEventListener('click', function() {
             document.getElementById('scriptModal').classList.remove('active');
         });
 
-        // Fechar modal ao clicar fora
-        document.getElementById('scriptModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-            }
+        // Filtros
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                filterScripts(filter);
+            });
         });
 
-        // Função para baixar/comprar script
-        function downloadScript(scriptId) {
-            const script = scriptsData.find(s => s.id === scriptId);
-            if (!script) return;
-            
-            if (script.price === 0) {
-                alert(`Iniciando download de ${script.title}...`);
-                // Em um sistema real, aqui seria o link de download
-            } else {
-                alert(`Redirecionando para página de compra de ${script.title}...`);
-                // Em um sistema real, aqui seria o redirecionamento para checkout
-            }
-        }
+        // Pesquisa
+        document.getElementById('searchInput').addEventListener('input', function() {
+            filterScripts();
+        });
 
-        // Função para comprar script (apenas para scripts premium)
-        function purchaseScript(scriptId) {
-            const script = scriptsData.find(s => s.id === scriptId);
-            if (!script || script.price === 0) return;
-            
-            alert(`Processando compra de ${script.title} por R$ ${script.price.toFixed(2)}...`);
-            // Em um sistema real, aqui seria a integração com gateway de pagamento
-        }
-
-        // Filtros e pesquisa
-        document.getElementById('searchInput').addEventListener('input', filterScripts);
-        document.getElementById('categoryFilter').addEventListener('change', filterScripts);
-        document.getElementById('priceFilter').addEventListener('change', filterScripts);
-
-        function filterScripts() {
+        function filterScripts(activeFilter = null) {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value;
-            const price = document.getElementById('priceFilter').value;
+            const filter = activeFilter || document.querySelector('.filter-btn.active').getAttribute('data-filter');
             
-            const filteredScripts = scriptsData.filter(script => {
+            let filteredScripts = scriptsData.filter(script => {
                 const matchesSearch = script.title.toLowerCase().includes(searchTerm) || 
                                      script.description.toLowerCase().includes(searchTerm);
-                const matchesCategory = category === 'all' || script.category === category;
-                const matchesPrice = price === 'all' || 
-                                   (price === 'free' && script.price === 0) || 
-                                   (price === 'premium' && script.price > 0);
                 
-                return matchesSearch && matchesCategory && matchesPrice;
+                let matchesFilter = true;
+                if (filter === 'auth') matchesFilter = script.category === 'auth';
+                else if (filter === 'security') matchesFilter = script.category === 'security';
+                else if (filter === 'utility') matchesFilter = script.category === 'utility';
+                else if (filter === 'free') matchesFilter = script.price === 0;
+                else if (filter === 'premium') matchesFilter = script.price > 0;
+                
+                return matchesSearch && matchesFilter;
             });
             
             renderScripts(filteredScripts);
         }
 
-        // Inicializar a página
+        // Inicializar
         document.addEventListener('DOMContentLoaded', function() {
             renderScripts(scriptsData);
         });
