@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteXAuth - Scripts</title>
+    <title>ByteXAuth - Sistema de Autenticação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -93,6 +93,128 @@
         .page-title p {
             color: var(--text-secondary);
             font-size: 18px;
+        }
+
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .auth-box {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            color: var(--text);
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--primary-light);
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            width: auto;
+        }
+
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .login-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .login-option.discord {
+            background: #5865F2;
+        }
+
+        .login-option.google {
+            background: #DB4437;
         }
 
         .scripts-grid {
@@ -206,35 +328,6 @@
 
         .script-price.premium {
             color: var(--warning);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--primary-light);
-        }
-
-        .btn-small {
-            padding: 6px 12px;
-            font-size: 12px;
         }
 
         .search-container {
@@ -380,6 +473,107 @@
             overflow-x: auto;
         }
 
+        .purchase-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .purchase-section h3 {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .pix-code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+            margin-bottom: 15px;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dashboard {
+            display: none;
+            margin: 40px 0;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dashboard-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .dashboard-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .purchased-scripts {
+            margin-top: 40px;
+        }
+
+        .purchased-scripts h2 {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
         footer {
             text-align: center;
             padding: 40px 0;
@@ -422,6 +616,25 @@
             background: #4752c4;
         }
 
+        .alert {
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -451,37 +664,167 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="scripts.html" class="active">Scripts</a></li>
-                    <li><a href="auth.html">Autenticação</a></li>
-                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#" class="nav-link" data-page="home">Início</a></li>
+                    <li><a href="#" class="nav-link" data-page="scripts">Scripts</a></li>
+                    <li><a href="#" class="nav-link" data-page="auth">Autenticação</a></li>
+                    <li><a href="#" class="nav-link" data-page="dashboard">Dashboard</a></li>
                 </ul>
             </nav>
         </header>
 
-        <section class="page-title">
-            <h1>Nossos Scripts</h1>
-            <p>Encontre os melhores scripts para seus projetos</p>
-        </section>
+        <!-- Página Inicial -->
+        <div id="home-page" class="page active">
+            <section class="page-title">
+                <h1>ByteXAuth</h1>
+                <p>Sistema de autenticação avançado para desenvolvedores</p>
+            </section>
 
-        <div class="search-container">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Pesquisar scripts...">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <div class="auth-tabs">
+                        <div class="auth-tab active" data-tab="login">Login</div>
+                        <div class="auth-tab" data-tab="register">Registro</div>
+                    </div>
+
+                    <div class="alert alert-success" id="loginAlert"></div>
+
+                    <form class="auth-form active" id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">E-mail</label>
+                            <input type="email" id="loginEmail" class="form-control" placeholder="Seu e-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Senha</label>
+                            <input type="password" id="loginPassword" class="form-control" placeholder="Sua senha" required>
+                        </div>
+                        <button type="submit" class="btn">Entrar</button>
+                    </form>
+
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="registerUsername">Nome de Usuário</label>
+                            <input type="text" id="registerUsername" class="form-control" placeholder="Seu nome de usuário" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">E-mail</label>
+                            <input type="email" id="registerEmail" class="form-control" placeholder="Seu e-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Senha</label>
+                            <input type="password" id="registerPassword" class="form-control" placeholder="Sua senha" required>
+                        </div>
+                        <button type="submit" class="btn">Criar Conta</button>
+                    </form>
+
+                    <div class="login-options">
+                        <div class="login-option discord" id="discordLogin">
+                            <i class="fab fa-discord"></i>
+                            <span>Entrar com Discord</span>
+                        </div>
+                        <div class="login-option google" id="googleLogin">
+                            <i class="fab fa-google"></i>
+                            <span>Entrar com Google</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="auth">Autenticação</button>
-            <button class="filter-btn" data-filter="security">Segurança</button>
-            <button class="filter-btn" data-filter="utility">Utilitários</button>
-            <button class="filter-btn" data-filter="free">Gratuitos</button>
-            <button class="filter-btn" data-filter="premium">Premium</button>
+        <!-- Página de Scripts -->
+        <div id="scripts-page" class="page">
+            <section class="page-title">
+                <h1>Nossos Scripts</h1>
+                <p>Encontre os melhores scripts para seus projetos</p>
+            </section>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Pesquisar scripts...">
+                </div>
+            </div>
+
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="auth">Autenticação</button>
+                <button class="filter-btn" data-filter="security">Segurança</button>
+                <button class="filter-btn" data-filter="utility">Utilitários</button>
+                <button class="filter-btn" data-filter="free">Gratuitos</button>
+                <button class="filter-btn" data-filter="premium">Premium</button>
+            </div>
+
+            <div class="scripts-grid" id="scriptsContainer">
+                <!-- Scripts serão carregados aqui -->
+            </div>
         </div>
 
-        <div class="scripts-grid" id="scriptsContainer">
-            <!-- Scripts serão carregados aqui -->
+        <!-- Página de Autenticação -->
+        <div id="auth-page" class="page">
+            <section class="page-title">
+                <h1>Sistema de Autenticação</h1>
+                <p>Gerencie suas credenciais e configurações de segurança</p>
+            </section>
+
+            <div class="auth-container">
+                <div class="auth-box">
+                    <div class="alert alert-error">
+                        Você precisa estar logado para acessar esta página
+                    </div>
+                    <button class="btn" id="goToLogin">Fazer Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Dashboard -->
+        <div id="dashboard-page" class="page">
+            <section class="page-title">
+                <h1>Dashboard</h1>
+                <p>Gerencie sua conta e scripts adquiridos</p>
+            </section>
+
+            <div class="dashboard" id="dashboard">
+                <div class="dashboard-header">
+                    <h2>Bem-vindo, <span id="userName">Usuário</span></h2>
+                    <div class="user-info">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div>
+                            <div id="userEmail">usuario@exemplo.com</div>
+                            <div style="font-size: 14px; color: var(--text-secondary);">Conta Premium</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <h3>Scripts Adquiridos</h3>
+                        <div class="value" id="scriptsCount">0</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Total Gasto</h3>
+                        <div class="value">R$ <span id="totalSpent">0</span></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Membro Desde</h3>
+                        <div class="value" id="memberSince">2023</div>
+                    </div>
+                </div>
+
+                <div class="purchased-scripts">
+                    <h2>Meus Scripts</h2>
+                    <div id="purchasedScriptsList">
+                        <p>Você ainda não adquiriu nenhum script.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-container" id="dashboardLogin">
+                <div class="auth-box">
+                    <div class="alert alert-error">
+                        Você precisa estar logado para acessar o dashboard
+                    </div>
+                    <button class="btn" id="goToLoginFromDashboard">Fazer Login</button>
+                </div>
+            </div>
         </div>
 
         <footer>
@@ -530,16 +873,47 @@
                     <h3>Instruções</h3>
                     <p id="modalInstructions"></p>
                 </div>
+
+                <div class="purchase-section" id="purchaseSection">
+                    <h3>Adquirir Script</h3>
+                    <p id="purchaseMessage"></p>
+                    <div class="pix-code" id="pixCode"></div>
+                    <button class="copy-btn" id="copyPix">Copiar PIX</button>
+                </div>
+
+                <div class="download-section" id="downloadSection" style="display: none;">
+                    <h3>Download</h3>
+                    <p>Script adquirido com sucesso! Faça o download abaixo:</p>
+                    <button class="btn" id="downloadScript">Baixar Script</button>
+                </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="modalDownload">Baixar</button>
-                <button class="btn" id="modalPurchase">Comprar</button>
+                <button class="btn btn-secondary" id="modalCloseBtn">Fechar</button>
+                <button class="btn" id="modalActionBtn">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login Obrigatório -->
+    <div class="modal" id="loginRequiredModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login Necessário</h2>
+                <button class="modal-close" id="loginModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Você precisa estar logado para adquirir scripts e acessar todas as funcionalidades.</p>
+                <p>Faça login com Discord ou Google para continuar.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelLogin">Cancelar</button>
+                <button class="btn" id="goToLoginModal">Fazer Login</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Dados dos scripts (igual ao original)
+        // Dados dos scripts
         const scriptsData = [
             {
                 id: 1,
@@ -553,21 +927,42 @@
                 price: 29.99,
                 category: "auth",
                 type: "premium",
-                codePreview: `// Sistema de autenticação
-function loginUser(username, password) {
-    // Verificar credenciais
-    if (validateCredentials(username, password)) {
-        return generateAuthToken(user);
-    }
-    return null;
-}`,
+                pixCode: "00020126850014BR.GOV.BCB.PIX0136cbfba161-6440-44fb-8571-b6f72d081f3d0223Sistema de Autenticação520400005303986540529.995802BR5925Miguel Pyetro da Silva Fa6009SAO PAULO62140510NAg8oxkvqU6304F073",
+                codePreview: `-- Sistema de autenticação Lua
+local AuthSystem = {}
+
+function AuthSystem:new()
+    local obj = {}
+    setmetatable(obj, self)
+    self.__index = self
+    return obj
+end
+
+function AuthSystem:login(username, password)
+    -- Verificar credenciais
+    if self:validateCredentials(username, password) then
+        return self:generateToken(username)
+    end
+    return nil
+end
+
+function AuthSystem:register(userData)
+    -- Registrar novo usuário
+    if self:userExists(userData.username) then
+        return false, "Usuário já existe"
+    end
+    -- Criar usuário
+    return true, "Usuário criado com sucesso"
+end
+
+return AuthSystem`,
                 features: [
                     "Login e registro de usuários",
                     "Recuperação de senha",
                     "Autenticação de dois fatores",
                     "Proteção contra ataques"
                 ],
-                instructions: "Inclua o arquivo auth.js em seu projeto e configure as opções no arquivo config.js"
+                instructions: "1. Baixe o arquivo auth_system.lua\n2. Importe em seu projeto: local Auth = require('auth_system')\n3. Crie uma instância: local auth = Auth:new()\n4. Use os métodos disponíveis para autenticação"
             },
             {
                 id: 2,
@@ -581,19 +976,36 @@ function loginUser(username, password) {
                 price: 19.99,
                 category: "security",
                 type: "premium",
-                codePreview: `// Middleware de segurança
-app.use(securityMiddleware({
-    rateLimit: true,
-    cors: true,
-    xssProtection: true
-}));`,
+                pixCode: "00020126740014BR.GOV.BCB.PIX0136cbfba161-6440-44fb-8571-b6f72d081f3d0212API Security520400005303986540519.995802BR5925Miguel Pyetro da Silva Fa6009SAO PAULO62140510RTz2FZ4fCM6304FC53",
+                codePreview: `-- Middleware de segurança para APIs Lua
+local Security = {}
+
+function Security.middleware(options)
+    options = options or {}
+    
+    return function(req, res, next)
+        -- Rate limiting
+        if not Security:checkRateLimit(req.ip) then
+            return res:status(429):json({error = "Muitas requisições"})
+        end
+        
+        -- Verificação de origem
+        if not Security:checkOrigin(req.headers.origin) then
+            return res:status(403):json({error = "Origem não permitida"})
+        end
+        
+        next()
+    end
+end
+
+return Security`,
                 features: [
                     "Rate limiting",
                     "Proteção CORS",
                     "Sanitização de dados",
                     "Detecção de bots"
                 ],
-                instructions: "Instale via npm e configure no arquivo de configuração principal"
+                instructions: "1. Instale o middleware em sua API\n2. Configure as opções de segurança\n3. Aplique às rotas desejadas"
             },
             {
                 id: 3,
@@ -607,18 +1019,45 @@ app.use(securityMiddleware({
                 price: 0,
                 category: "utility",
                 type: "free",
-                codePreview: `// Gerador de senhas
-function generatePassword(length, options) {
-    const chars = getChars(options);
-    return generateSecurePassword(chars, length);
-}`,
+                codePreview: `-- Gerador de senhas seguras em Lua
+local PasswordGenerator = {}
+
+function PasswordGenerator:generate(length, options)
+    length = length or 12
+    options = options or {
+        uppercase = true,
+        lowercase = true,
+        numbers = true,
+        symbols = true
+    }
+    
+    local chars = ""
+    if options.uppercase then chars = chars .. "ABCDEFGHIJKLMNOPQRSTUVWXYZ" end
+    if options.lowercase then chars = chars .. "abcdefghijklmnopqrstuvwxyz" end
+    if options.numbers then chars = chars .. "0123456789" end
+    if options.symbols then chars = chars .. "!@#$%^&*()_+-=[]{}|;:,.<>?" end
+    
+    if chars == "" then
+        return nil, "Nenhum tipo de caractere selecionado"
+    end
+    
+    local password = ""
+    for i = 1, length do
+        local rand = math.random(1, #chars)
+        password = password .. string.sub(chars, rand, rand)
+    end
+    
+    return password
+end
+
+return PasswordGenerator`,
                 features: [
                     "Geração de senhas seguras",
-                    "Múltiplos níveis",
-                    "Personalização",
-                    "Avaliação de força"
+                    "Múltiplos níveis de complexidade",
+                    "Personalização de caracteres",
+                    "Avaliação de força da senha"
                 ],
-                instructions: "Copie o código para seu projeto ou use o arquivo standalone"
+                instructions: "1. Use o gerador em seus projetos Lua\n2. Personalize o comprimento e opções\n3. Gere senhas seguras para seus usuários"
             },
             {
                 id: 4,
@@ -632,19 +1071,55 @@ function generatePassword(length, options) {
                 price: 24.99,
                 category: "auth",
                 type: "premium",
-                codePreview: `// Gerenciador de sessões
-class SessionManager {
-    createSession(user) {
-        return new Session(user);
+                pixCode: "00020126770014BR.GOV.BCB.PIX0136cbfba161-6440-44fb-8571-b6f72d081f3d0215Session Manager520400005303986540524.995802BR5925Miguel Pyetro da Silva Fa6009SAO PAULO6214051049zVAa8SVE630453E1",
+                codePreview: `-- Gerenciador de sessões em Lua
+local SessionManager = {}
+
+function SessionManager:new()
+    local obj = {
+        sessions = {},
+        timeout = 3600 -- 1 hora
     }
-}`,
+    setmetatable(obj, self)
+    self.__index = self
+    return obj
+end
+
+function SessionManager:createSession(userId)
+    local sessionId = self:generateSessionId()
+    local session = {
+        id = sessionId,
+        userId = userId,
+        createdAt = os.time(),
+        expiresAt = os.time() + self.timeout
+    }
+    
+    self.sessions[sessionId] = session
+    return sessionId
+end
+
+function SessionManager:validateSession(sessionId)
+    local session = self.sessions[sessionId]
+    if not session then return false end
+    
+    if os.time() > session.expiresAt then
+        self.sessions[sessionId] = nil
+        return false
+    end
+    
+    -- Renovar sessão
+    session.expiresAt = os.time() + self.timeout
+    return true, session.userId
+end
+
+return SessionManager`,
                 features: [
                     "Gerenciamento de sessões",
                     "Renovação automática",
                     "Expiração configurável",
                     "Logout remoto"
                 ],
-                instructions: "Implemente a classe SessionManager em seu projeto"
+                instructions: "1. Implemente o gerenciador de sessões\n2. Configure o tempo de expiração\n3. Use para gerenciar sessões de usuários"
             },
             {
                 id: 5,
@@ -658,43 +1133,261 @@ class SessionManager {
                 price: 0,
                 category: "security",
                 type: "free",
-                codePreview: `// Utilitário de criptografia
-const encrypted = encrypt(data, key);
-const decrypted = decrypt(encrypted, key);`,
+                codePreview: `-- Utilitário de criptografia em Lua
+local Crypto = {}
+
+-- Criptografia simples (XOR para exemplo)
+function Crypto:simpleEncrypt(text, key)
+    local result = ""
+    for i = 1, #text do
+        local char = string.byte(text, i)
+        local keyChar = string.byte(key, (i % #key) + 1)
+        result = result .. string.char(bit32.bxor(char, keyChar))
+    end
+    return result
+end
+
+function Crypto:simpleDecrypt(encrypted, key)
+    return self:simpleEncrypt(encrypted, key) -- XOR é reversível
+end
+
+-- Hash MD5 (simulação)
+function Crypto:md5(input)
+    -- Implementação simplificada para exemplo
+    return "md5_hash_" .. input
+end
+
+-- Gerador de salt para senhas
+function Crypto:generateSalt(length)
+    length = length or 16
+    local chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    local salt = ""
+    for i = 1, length do
+        local rand = math.random(1, #chars)
+        salt = salt .. string.sub(chars, rand, rand)
+    end
+    return salt
+end
+
+return Crypto`,
                 features: [
-                    "Criptografia AES-256",
+                    "Criptografia de dados",
                     "Múltiplos algoritmos",
-                    "Geração de chaves",
-                    "Criptografia de arquivos"
+                    "Geração de hashes",
+                    "Funções de utilitário"
                 ],
-                instructions: "Inclua o arquivo encryption.js em seu projeto"
+                instructions: "1. Use para criptografar dados sensíveis\n2. Implemente em sistemas de segurança\n3. Personalize conforme necessidade"
             },
             {
                 id: 6,
-                title: "Game Anti-Cheat",
-                icon: "fas fa-gamepad",
-                description: "Sistema de detecção de trapaças para jogos online com relatórios detalhados.",
+                title: "Security Hub 24/7",
+                icon: "fas fa-shield-alt",
+                description: "Sistema de segurança 24 horas para proteger seu hub contra roubo de código.",
                 version: "3.2.5",
                 downloads: "15.2K",
                 rating: "4.7",
-                tags: ["security", "game", "premium"],
+                tags: ["security", "hub", "premium"],
                 price: 49.99,
-                category: "game",
+                category: "security",
                 type: "premium",
-                codePreview: `// Sistema anti-cheat
-antiCheat.monitor(player);
-if (antiCheat.detectCheats(player)) {
-    antiCheat.ban(player);
-}`,
+                disabled: true,
+                codePreview: `-- Sistema de segurança para Hub
+local HubSecurity = {}
+
+function HubSecurity:new()
+    local obj = {
+        protections = {
+            antiTamper = true,
+            antiDump = true,
+            encryption = true
+        }
+    }
+    setmetatable(obj, self)
+    self.__index = self
+    return obj
+end
+
+function HubSecurity:enableProtection()
+    -- Ativar todas as proteções
+    for protection, enabled in pairs(self.protections) do
+        if enabled then
+            self:activateProtection(protection)
+        end
+    end
+end
+
+function HubSecurity:activateProtection(protection)
+    -- Implementação específica de cada proteção
+    if protection == "antiTamper" then
+        self:setupAntiTamper()
+    elseif protection == "antiDump" then
+        self:setupAntiDump()
+    elseif protection == "encryption" then
+        self:setupEncryption()
+    end
+end
+
+return HubSecurity`,
                 features: [
-                    "Detecção de speed hacks",
-                    "Identificação de wallhacks",
-                    "Detecção de aimbots",
-                    "Sistema de relatórios"
+                    "Proteção anti-tamper",
+                    "Prevenção contra dump",
+                    "Criptografia de código",
+                    "Monitoramento 24/7"
                 ],
-                instructions: "Integre o sistema anti-cheat em seu jogo"
+                instructions: "1. Implemente no seu hub\n2. Configure as proteções\n3. Ative o sistema de segurança"
             }
         ];
+
+        // Estado do usuário
+        let currentUser = null;
+        let purchasedScripts = JSON.parse(localStorage.getItem('purchasedScripts') || '[]');
+
+        // Sistema de navegação
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                showPage(page);
+            });
+        });
+
+        function showPage(page) {
+            // Esconder todas as páginas
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            // Mostrar página selecionada
+            document.getElementById(`${page}-page`).classList.add('active');
+            
+            // Atualizar navegação
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.nav-link[data-page="${page}"]`).classList.add('active');
+            
+            // Renderizar scripts se for a página de scripts
+            if (page === 'scripts') {
+                renderScripts(scriptsData);
+            }
+            
+            // Atualizar dashboard se for a página do dashboard
+            if (page === 'dashboard') {
+                updateDashboard();
+            }
+        }
+
+        // Sistema de autenticação
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const tabName = this.getAttribute('data-tab');
+                document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+                document.getElementById(`${tabName}Form`).classList.add('active');
+            });
+        });
+
+        // Login com Discord
+        document.getElementById('discordLogin').addEventListener('click', function() {
+            document.getElementById('loginAlert').textContent = 'Redirecionando para Discord...';
+            document.getElementById('loginAlert').style.display = 'block';
+            
+            setTimeout(() => {
+                loginUser({
+                    name: 'Usuário Discord',
+                    email: 'discord@user.com',
+                    avatar: 'D'
+                });
+            }, 1500);
+        });
+
+        // Login com Google
+        document.getElementById('googleLogin').addEventListener('click', function() {
+            document.getElementById('loginAlert').textContent = 'Redirecionando para Google...';
+            document.getElementById('loginAlert').style.display = 'block';
+            
+            setTimeout(() => {
+                // Simular envio de código por email
+                const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+                alert(`Código de verificação enviado para seu email: ${code}`);
+                
+                const userCode = prompt('Digite o código de verificação:');
+                if (userCode === code) {
+                    loginUser({
+                        name: 'Usuário Google',
+                        email: 'google@user.com',
+                        avatar: 'G'
+                    });
+                } else {
+                    alert('Código inválido!');
+                }
+            }, 1500);
+        });
+
+        // Login manual
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                loginUser({
+                    name: email.split('@')[0],
+                    email: email,
+                    avatar: email[0].toUpperCase()
+                });
+            }
+        });
+
+        // Registro manual
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            if (username && email && password) {
+                loginUser({
+                    name: username,
+                    email: email,
+                    avatar: username[0].toUpperCase()
+                });
+            }
+        });
+
+        function loginUser(user) {
+            currentUser = user;
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            
+            document.getElementById('loginAlert').textContent = 'Login realizado com sucesso!';
+            document.getElementById('loginAlert').style.display = 'block';
+            
+            setTimeout(() => {
+                showPage('dashboard');
+            }, 1000);
+        }
+
+        function logoutUser() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            showPage('home');
+        }
+
+        // Botões de login obrigatório
+        document.getElementById('goToLogin').addEventListener('click', function() {
+            showPage('home');
+        });
+
+        document.getElementById('goToLoginFromDashboard').addEventListener('click', function() {
+            showPage('home');
+        });
+
+        document.getElementById('goToLoginModal').addEventListener('click', function() {
+            document.getElementById('loginRequiredModal').classList.remove('active');
+            showPage('home');
+        });
 
         // Renderizar scripts
         function renderScripts(scripts) {
@@ -702,6 +1395,7 @@ if (antiCheat.detectCheats(player)) {
             container.innerHTML = '';
             
             scripts.forEach(script => {
+                const isPurchased = purchasedScripts.includes(script.id);
                 const card = document.createElement('div');
                 card.className = 'script-card';
                 card.innerHTML = `
@@ -737,8 +1431,8 @@ if (antiCheat.detectCheats(player)) {
                         </div>
                         <div>
                             <button class="btn btn-small btn-secondary view-details" data-id="${script.id}">Detalhes</button>
-                            <button class="btn btn-small ${script.price === 0 ? 'btn-secondary' : ''}" data-id="${script.id}">
-                                ${script.price === 0 ? 'Baixar' : 'Comprar'}
+                            <button class="btn btn-small ${script.price === 0 || isPurchased ? 'btn-secondary' : ''}" data-id="${script.id}">
+                                ${script.price === 0 ? 'Baixar' : isPurchased ? 'Baixar' : 'Comprar'}
                             </button>
                         </div>
                     </div>
@@ -758,10 +1452,15 @@ if (antiCheat.detectCheats(player)) {
                 btn.addEventListener('click', function() {
                     const scriptId = parseInt(this.getAttribute('data-id'));
                     const script = scriptsData.find(s => s.id === scriptId);
-                    if (script.price === 0) {
-                        alert(`Download iniciado: ${script.title}`);
+                    
+                    if (script.price === 0 || purchasedScripts.includes(scriptId)) {
+                        downloadScript(scriptId);
                     } else {
-                        alert(`Redirecionando para compra: ${script.title}`);
+                        if (!currentUser) {
+                            document.getElementById('loginRequiredModal').classList.add('active');
+                        } else {
+                            openScriptModal(scriptId);
+                        }
                     }
                 });
             });
@@ -785,38 +1484,119 @@ if (antiCheat.detectCheats(player)) {
                 featuresList.appendChild(li);
             });
             
-            // Configurar botões
-            const downloadBtn = document.getElementById('modalDownload');
-            const purchaseBtn = document.getElementById('modalPurchase');
+            const isPurchased = purchasedScripts.includes(scriptId);
+            const purchaseSection = document.getElementById('purchaseSection');
+            const downloadSection = document.getElementById('downloadSection');
+            const actionBtn = document.getElementById('modalActionBtn');
             
-            if (script.price === 0) {
-                downloadBtn.textContent = 'Baixar';
-                purchaseBtn.style.display = 'none';
+            if (script.disabled) {
+                purchaseSection.style.display = 'block';
+                downloadSection.style.display = 'none';
+                document.getElementById('purchaseMessage').textContent = 'Este produto está temporariamente desativado devido à alta demanda. Tente novamente mais tarde.';
+                document.getElementById('pixCode').textContent = 'PRODUTO INDISPONÍVEL';
+                document.getElementById('copyPix').style.display = 'none';
+                actionBtn.textContent = 'Indisponível';
+                actionBtn.disabled = true;
+            } else if (script.price === 0 || isPurchased) {
+                purchaseSection.style.display = 'none';
+                downloadSection.style.display = 'block';
+                actionBtn.textContent = 'Fechar';
             } else {
-                downloadBtn.textContent = 'Ver Demo';
-                purchaseBtn.textContent = `Comprar R$ ${script.price}`;
-                purchaseBtn.style.display = 'inline-block';
+                purchaseSection.style.display = 'block';
+                downloadSection.style.display = 'none';
+                document.getElementById('purchaseMessage').textContent = `Para adquirir "${script.title}" por R$ ${script.price}, utilize o código PIX abaixo:`;
+                document.getElementById('pixCode').textContent = script.pixCode;
+                document.getElementById('copyPix').style.display = 'block';
+                actionBtn.textContent = `Comprar R$ ${script.price}`;
+                actionBtn.disabled = false;
             }
             
-            downloadBtn.onclick = () => {
-                if (script.price === 0) {
-                    alert(`Download: ${script.title}`);
-                } else {
-                    alert(`Demo: ${script.title}`);
-                }
+            // Configurar botões
+            document.getElementById('copyPix').onclick = () => {
+                navigator.clipboard.writeText(script.pixCode).then(() => {
+                    alert('Código PIX copiado!');
+                });
             };
             
-            purchaseBtn.onclick = () => {
-                alert(`Compra: ${script.title} - R$ ${script.price}`);
+            document.getElementById('downloadScript').onclick = () => {
+                downloadScript(scriptId);
+            };
+            
+            actionBtn.onclick = () => {
+                if (script.disabled) {
+                    return;
+                }
+                
+                if (script.price === 0 || isPurchased) {
+                    document.getElementById('scriptModal').classList.remove('active');
+                } else {
+                    // Simular compra
+                    purchasedScripts.push(scriptId);
+                    localStorage.setItem('purchasedScripts', JSON.stringify(purchasedScripts));
+                    
+                    alert(`Compra realizada com sucesso! Agora você pode baixar "${script.title}".`);
+                    document.getElementById('scriptModal').classList.remove('active');
+                    
+                    // Atualizar a lista de scripts
+                    renderScripts(scriptsData);
+                    updateDashboard();
+                }
             };
             
             document.getElementById('scriptModal').classList.add('active');
         }
 
-        // Fechar modal
+        // Fechar modais
         document.getElementById('modalClose').addEventListener('click', function() {
             document.getElementById('scriptModal').classList.remove('active');
         });
+
+        document.getElementById('modalCloseBtn').addEventListener('click', function() {
+            document.getElementById('scriptModal').classList.remove('active');
+        });
+
+        document.getElementById('loginModalClose').addEventListener('click', function() {
+            document.getElementById('loginRequiredModal').classList.remove('active');
+        });
+
+        document.getElementById('cancelLogin').addEventListener('click', function() {
+            document.getElementById('loginRequiredModal').classList.remove('active');
+        });
+
+        // Fechar modal ao clicar fora
+        document.getElementById('scriptModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        document.getElementById('loginRequiredModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Download de script
+        function downloadScript(scriptId) {
+            const script = scriptsData.find(s => s.id === scriptId);
+            if (!script) return;
+            
+            // Criar arquivo de download
+            const content = script.codePreview + 
+                `\n\n-- Instruções de uso:\n-- ${script.instructions}\n\n-- ByteXAuth - ${script.title} v${script.version}`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${script.title.toLowerCase().replace(/\s+/g, '_')}.lua`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert(`Download de "${script.title}" iniciado!`);
+        }
 
         // Filtros
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -855,8 +1635,89 @@ if (antiCheat.detectCheats(player)) {
             renderScripts(filteredScripts);
         }
 
+        // Atualizar dashboard
+        function updateDashboard() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            const dashboard = document.getElementById('dashboard');
+            const dashboardLogin = document.getElementById('dashboardLogin');
+            
+            if (user) {
+                currentUser = user;
+                dashboard.style.display = 'block';
+                dashboardLogin.style.display = 'none';
+                
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('userAvatar').textContent = user.avatar;
+                document.getElementById('scriptsCount').textContent = purchasedScripts.length;
+                
+                // Calcular total gasto
+                let total = 0;
+                purchasedScripts.forEach(id => {
+                    const script = scriptsData.find(s => s.id === id);
+                    if (script) total += script.price;
+                });
+                document.getElementById('totalSpent').textContent = total.toFixed(2);
+                
+                // Listar scripts adquiridos
+                const purchasedList = document.getElementById('purchasedScriptsList');
+                if (purchasedScripts.length > 0) {
+                    purchasedList.innerHTML = '';
+                    purchasedScripts.forEach(id => {
+                        const script = scriptsData.find(s => s.id === id);
+                        if (script) {
+                            const div = document.createElement('div');
+                            div.className = 'script-card';
+                            div.innerHTML = `
+                                <div class="script-header">
+                                    <div class="script-title">
+                                        <i class="${script.icon}"></i>
+                                        <h3>${script.title}</h3>
+                                    </div>
+                                </div>
+                                <div class="script-footer">
+                                    <button class="btn btn-small download-purchased" data-id="${script.id}">Baixar</button>
+                                    <button class="btn btn-small btn-secondary view-details" data-id="${script.id}">Detalhes</button>
+                                </div>
+                            `;
+                            purchasedList.appendChild(div);
+                        }
+                    });
+                    
+                    // Adicionar event listeners para os botões
+                    document.querySelectorAll('.download-purchased').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const scriptId = parseInt(this.getAttribute('data-id'));
+                            downloadScript(scriptId);
+                        });
+                    });
+                    
+                    document.querySelectorAll('.view-details').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const scriptId = parseInt(this.getAttribute('data-id'));
+                            openScriptModal(scriptId);
+                        });
+                    });
+                } else {
+                    purchasedList.innerHTML = '<p>Você ainda não adquiriu nenhum script.</p>';
+                }
+            } else {
+                dashboard.style.display = 'none';
+                dashboardLogin.style.display = 'block';
+            }
+        }
+
         // Inicializar
         document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se usuário está logado
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showPage('dashboard');
+            } else {
+                showPage('home');
+            }
+            
             renderScripts(scriptsData);
         });
     </script>
